@@ -45,10 +45,25 @@ const Profile = () => {
     }
   };
 
+  
+
   return (
-    <div className="container mx-auto p-4 mt-[10rem]">
+    <div className="container mx-auto p-4 ">
       <div className="flex justify-center align-center md:flex md:space-x-4">
         <div className="md:w-1/3">
+       
+         {userInfo.isAdmin && (
+          <div className="mb-10">
+          <Link
+                 to="/admin/dashboard"
+                 target="_blank"
+                 className="bg-yellow-400 text-white py-2 px-5 rounded hover:bg-yellow-500 "
+               >
+                 Go To Dashboard
+               </Link>
+          </div>
+         )}
+
           <h2 className="text-2xl font-semibold mb-4">Update Profile</h2>
           <form onSubmit={submitHandler}>
             <div className="mb-4">

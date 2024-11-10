@@ -37,6 +37,8 @@ const ProductDetails = () => {
     error,
   } = useGetProductDetailsQuery(productId);
 
+    
+
   const { userInfo } = useSelector((state) => state.auth);
 
   const [createReview, { isLoading: loadingProductReview }] =
@@ -63,6 +65,14 @@ const ProductDetails = () => {
     navigate("/cart");
   };
 
+  const averageRating =
+    product?.reviews?.length > 0
+      ? product.reviews.reduce((acc, review) => acc + review.rating, 0) /
+        product.reviews.length
+      : 0;
+
+ 
+
   return (
     <>
       <div>
@@ -82,62 +92,79 @@ const ProductDetails = () => {
         </Message>
       ) : (
         <>
-          <div className="flex flex-wrap relative items-between mt-[2rem] ml-[10rem]">
-            <div>
+          <div className="flex flex-wrap relative">
+           <div className="grid grid-cols-2 " >
+             <div className="bg-pink-100 w-[500px] ml-14  rounded-2xl flex justify-center mt-20">
               <img
                 src={product.image}
                 alt={product.name}
-                className="w-full xl:w-[50rem] lg:w-[45rem] md:w-[30rem] sm:w-[20rem] mr-[2rem]"
+                className="w-[20rem] mt-5 rounded-lg object-cover"
               />
-
+          
               <HeartIcon product={product} />
             </div>
 
-            <div className="flex flex-col justify-between">
-              <h2 className="text-2xl font-semibold">{product.name}</h2>
-              <p className="my-4 xl:w-[35rem] lg:w-[35rem] md:w-[30rem] text-[#B0B0B0]">
+            <div className=" ml-10 mt-20">
+           
+           <div className="flex">
+
+            <div className="flex ml-4 mt-7">
+          <div className="relative flex">
+          {Array.from({ length: 5 }, (v, i) => <FaStar strokeWidth={2} size={20} color="#D1D5DB"/>)}  
+          </div>
+          <div className="absolute flex">
+         
+          {Array.from({ length: Math.round(averageRating)}, (v, i) => <FaStar   size={20} color="#FF719D"/>)}
+          </div>
+          </div>
+
+          <div className="font-mono mt-7 ml-5 font-semibold italic w-32">
+          {product.numReviews == 0 ? "" :<p>{product.numReviews} REVIEWS</p> }
+          </div>
+          </div>
+              <h2 className="text-5xl font-bold pl-4 pt-2 uppercase">{product.name}</h2>
+              <p className="my-4  pl-5 font-bold">
                 {product.description}
               </p>
-
-              <p className="text-5xl my-4 font-extrabold">$ {product.price}</p>
+         
+         
+              
 
               <div className="flex items-center justify-between w-[20rem]">
-                <div className="one">
-                  <h1 className="flex items-center mb-6">
-                    <FaStore className="mr-2 text-white" /> Brand:{" "}
+                <div>
+                  <h1 className="flex items-center font-bold w-28 rounded-xl text-lg ml-5 py-1 border-2 border-black mb-6">
+                    <FaStore size={21} className="mr-2 ml-4" />
                     {product.brand}
                   </h1>
-                  <h1 className="flex items-center mb-6 w-[20rem]">
+                  {/* <h1 className="flex items-center mb-6 w-[20rem]">
                     <FaClock className="mr-2 text-white" /> Added:{" "}
                     {moment(product.createAt).fromNow()}
-                  </h1>
-                  <h1 className="flex items-center mb-6">
+                  </h1> */}
+                  {/* <h1 className="flex items-center mb-6">
                     <FaStar className="mr-2 text-white" /> Reviews:{" "}
                     {product.numReviews}
-                  </h1>
+                  </h1> */}
                 </div>
 
                 <div className="two">
-                  <h1 className="flex items-center mb-6">
-                    <FaStar className="mr-2 text-white" /> Ratings: {rating}
-                  </h1>
-                  <h1 className="flex items-center mb-6">
+                  {/* <h1 className="flex items-center mb-6">
+                    <FaStar className="mr-2 text-white" /> Ratings: {Math.round(averageRating)}
+                  </h1> */}
+                  {/* <h1 className="flex items-center mb-6">
                     <FaShoppingCart className="mr-2 text-white" /> Quantity:{" "}
                     {product.quantity}
-                  </h1>
-                  <h1 className="flex items-center mb-6 w-[10rem]">
+                  </h1> */}
+                  {/* <h1 className="flex items-center mb-6 w-[10rem]">
                     <FaBox className="mr-2 text-white" /> In Stock:{" "}
                     {product.countInStock}
-                  </h1>
+                  </h1> */}
                 </div>
               </div>
 
-              <div className="flex justify-between flex-wrap">
-                <Ratings
-                  value={product.rating}
-                  text={`${product.numReviews} reviews`}
-                />
+              <p className="text-4xl pl-5 mt-1 mb-5 font-extrabold">₹{product.price}</p>
 
+              <div className="flex flex-col pt-2 pl-5 ml-28  border-2 rounded-3xl pb-8 w-[25rem]">
+                
                 {product.countInStock > 0 && (
                   <div>
                     <select
@@ -153,19 +180,19 @@ const ProductDetails = () => {
                     </select>
                   </div>
                 )}
-              </div>
-
-              <div className="btn-container">
                 <button
                   onClick={addToCartHandler}
                   disabled={product.countInStock === 0}
-                  className="bg-pink-600 text-white py-2 px-4 rounded-lg mt-4 md:mt-0"
+                  className="bg-black text-white py-4 hover:bg-white hover:text-black text-2xl w-[20rem] px-4 border-2 border-black rounded-full mt-10 ml-5 uppercase font-bold font-mono  "
                 >
                   Add To Cart
                 </button>
               </div>
             </div>
-
+           </div>
+           
+          
+          
             <div className="mt-[5rem] container flex flex-wrap items-start justify-between ml-[10rem]">
               <ProductTabs
                 loadingProductReview={loadingProductReview}

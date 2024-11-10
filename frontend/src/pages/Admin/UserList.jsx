@@ -8,8 +8,8 @@ import {
   useUpdateUserMutation,
 } from "../../redux/api/usersApiSlice";
 import { toast } from "react-toastify";
-// ⚠️⚠️⚠️ don't forget this ⚠️⚠️⚠️⚠️
-// import AdminMenu from "./AdminMenu";
+
+import AdminMenu from "./AdminMenu";
 
 const UserList = () => {
   const { data: users, refetch, isLoading, error } = useGetUsersQuery();
@@ -59,7 +59,7 @@ const UserList = () => {
 
   return (
     <div className="p-4">
-      <h1 className="text-2xl font-semibold mb-4">Users</h1>
+      <h1 className="text-2xl font-semibold mb-4 ml-20 mt-28">Users</h1>
       {isLoading ? (
         <Loader />
       ) : error ? (
@@ -68,11 +68,12 @@ const UserList = () => {
         </Message>
       ) : (
         <div className="flex flex-col md:flex-row">
-          {/* <AdminMenu /> */}
-          <table className="w-full md:w-4/5 mx-auto">
+          <AdminMenu />
+          <table className="w-full md:w-4/5 mx-auto ">
             <thead>
-              <tr>
-                <th className="px-4 py-2 text-left">ID</th>
+              <tr className="border border-gray-400 ">
+                <th className="px-4 py-3 text-left">Index</th>
+                <th className="px-4 py-2 text-left">UserID</th>
                 <th className="px-4 py-2 text-left">NAME</th>
                 <th className="px-4 py-2 text-left">EMAIL</th>
                 <th className="px-4 py-2 text-left">ADMIN</th>
@@ -80,12 +81,13 @@ const UserList = () => {
               </tr>
             </thead>
             <tbody>
-              {users.map((user) => (
-                <tr key={user._id}>
-                  <td className="px-4 py-2">{user._id}</td>
+              {users.map((user,i) => (
+                <tr className="border border-gray-400 text-black font-medium font-serif" key={user._id}>
+                  <td className="pl-8">{i}</td>
+                  <td className="px-4 py-5 ">{user._id}</td>
                   <td className="px-4 py-2">
                     {editableUserId === user._id ? (
-                      <div className="flex items-center">
+                      <div className="flex items-center ">
                         <input
                           type="text"
                           value={editableUserName}
@@ -94,7 +96,7 @@ const UserList = () => {
                         />
                         <button
                           onClick={() => updateHandler(user._id)}
-                          className="ml-2 bg-blue-500 text-white py-2 px-4 rounded-lg"
+                          className="ml-2 bg-blue-500 text-white py-2 px-3 rounded-lg"
                         >
                           <FaCheck />
                         </button>
@@ -107,7 +109,7 @@ const UserList = () => {
                             toggleEdit(user._id, user.username, user.email)
                           }
                         >
-                          <FaEdit className="ml-[1rem]" />
+                          <FaEdit size={20} className="ml-[0.5rem]" />
                         </button>
                       </div>
                     )}
@@ -123,7 +125,7 @@ const UserList = () => {
                         />
                         <button
                           onClick={() => updateHandler(user._id)}
-                          className="ml-2 bg-blue-500 text-white py-2 px-4 rounded-lg"
+                          className="ml-2 bg-blue-500 text-white py-2 px-3 rounded-lg"
                         >
                           <FaCheck />
                         </button>
@@ -136,16 +138,16 @@ const UserList = () => {
                             toggleEdit(user._id, user.name, user.email)
                           }
                         >
-                          <FaEdit className="ml-[1rem]" />
+                          <FaEdit size={20} className="ml-[0.5rem]" />
                         </button>
                       </div>
                     )}
                   </td>
                   <td className="px-4 py-2">
                     {user.isAdmin ? (
-                      <FaCheck style={{ color: "green" }} />
+                      <FaCheck style={{ color: "green" }} size={23}/>
                     ) : (
-                      <FaTimes style={{ color: "red" }} />
+                      <FaTimes style={{ color: "red" }} size={23}/>
                     )}
                   </td>
                   <td className="px-4 py-2">
@@ -153,7 +155,7 @@ const UserList = () => {
                       <div className="flex">
                         <button
                           onClick={() => deleteHandler(user._id)}
-                          className="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
+                          className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-2 rounded"
                         >
                           <FaTrash />
                         </button>

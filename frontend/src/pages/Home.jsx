@@ -21,8 +21,8 @@ const Home = () => {
       ) : (
         <>
           <div className="flex justify-between items-center">
-            <h1 className="ml-[20rem] mt-[10rem] text-[3rem]">
-              Special Products
+            <h1 className="ml-[2rem] mt-[10rem] text-[2rem]">
+              Specizal Products
             </h1>
 
             <Link

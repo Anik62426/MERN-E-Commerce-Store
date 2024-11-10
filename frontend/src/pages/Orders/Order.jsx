@@ -11,6 +11,7 @@ import {
   useGetPaypalClientIdQuery,
   usePayOrderMutation,
 } from "../../redux/api/orderApiSlice";
+import AdminMenu from "../Admin/AdminMenu";
 
 const Order = () => {
   const { id: orderId } = useParams();
@@ -92,18 +93,19 @@ const Order = () => {
   ) : error ? (
     <Messsage variant="danger">{error.data.message}</Messsage>
   ) : (
-    <div className="container flex flex-col ml-[10rem] md:flex-row">
-      <div className="md:w-2/3 pr-4">
-        <div className="border gray-300 mt-5 pb-4 mb-5">
+    <div className=" border-2  flex flex-col ml-[3rem] mr-[3rem] mt-28 md:flex-row">
+      {userInfo.isAdmin && (<AdminMenu/>)}
+      <div className="w-[60%] mr-5 ">
+        <div className="border mt-5 pb-4 mb-5">
           {order.orderItems.length === 0 ? (
             <Messsage>Order is empty</Messsage>
           ) : (
             <div className="overflow-x-auto">
-              <table className="w-[80%]">
+              <table className="w-[100%]  ">
                 <thead className="border-b-2">
                   <tr>
                     <th className="p-2">Image</th>
-                    <th className="p-2">Product</th>
+                    <th className="p-2 ">Product</th>
                     <th className="p-2 text-center">Quantity</th>
                     <th className="p-2">Unit Price</th>
                     <th className="p-2">Total</th>
@@ -113,15 +115,15 @@ const Order = () => {
                 <tbody>
                   {order.orderItems.map((item, index) => (
                     <tr key={index}>
-                      <td className="p-2">
+                      <td className="pl-5 pt-3">
                         <img
                           src={item.image}
                           alt={item.name}
-                          className="w-16 h-16 object-cover"
+                          className="w-16 h-16 object-cover "
                         />
                       </td>
 
-                      <td className="p-2">
+                      <td className="pl-4">
                         <Link to={`/product/${item.product}`}>{item.name}</Link>
                       </td>
 
@@ -139,30 +141,30 @@ const Order = () => {
         </div>
       </div>
 
-      <div className="md:w-1/3">
-        <div className="mt-5 border-gray-300 pb-4 mb-4">
+      <div className="w-[40%] border mr-5">
+        <div className="mt-5 ml-3 border-gray-300 pb-4 mb-4">
           <h2 className="text-xl font-bold mb-2">Shipping</h2>
-          <p className="mb-4 mt-4">
-            <strong className="text-pink-500">Order:</strong> {order._id}
+          <p className="mb-1 mt-1 text-gray-600 font-mono">
+            <strong className="text-black font-serif">Order:</strong> {order._id}
           </p>
 
-          <p className="mb-4">
-            <strong className="text-pink-500">Name:</strong>{" "}
+          <p className="mb-1  text-gray-600 font-mono ">
+            <strong className="text-black font-serif">Name:</strong>{" "}
             {order.user.username}
           </p>
 
-          <p className="mb-4">
-            <strong className="text-pink-500">Email:</strong> {order.user.email}
+          <p className="mb-1  text-gray-600 font-mono ">
+            <strong className="text-black font-serif">Email:</strong> {order.user.email}
           </p>
 
-          <p className="mb-4">
-            <strong className="text-pink-500">Address:</strong>{" "}
+          <p className="mb-1  text-gray-600 font-mono">
+            <strong className="text-black font-serif">Address:</strong>{" "}
             {order.shippingAddress.address}, {order.shippingAddress.city}{" "}
             {order.shippingAddress.postalCode}, {order.shippingAddress.country}
           </p>
 
-          <p className="mb-4">
-            <strong className="text-pink-500">Method:</strong>{" "}
+          <p className="mb-4 text-gray-600 font-mono">
+            <strong className="text-black font-serif">Method:</strong>{" "}
             {order.paymentMethod}
           </p>
 
@@ -173,22 +175,22 @@ const Order = () => {
           )}
         </div>
 
-        <h2 className="text-xl font-bold mb-2 mt-[3rem]">Order Summary</h2>
-        <div className="flex justify-between mb-2">
+        <h2 className="text-xl font-bold mb-2 ml-5 mt-[1rem] font-mono">Order Summary</h2>
+        <div className="flex justify-between ml-5 mb-2 w-9/12 font-mono">
           <span>Items</span>
-          <span>$ {order.itemsPrice}</span>
+          <span className="font-sans font-bold text-gray-600">$ {order.itemsPrice}</span>
         </div>
-        <div className="flex justify-between mb-2">
+        <div className="flex justify-between ml-5 mb-2 w-9/12 font-mono">
           <span>Shipping</span>
-          <span>$ {order.shippingPrice}</span>
+          <span className="font-sans font-bold text-gray-600">$ {order.shippingPrice}</span>
         </div>
-        <div className="flex justify-between mb-2">
+        <div className="flex justify-between ml-5 mb-2 w-9/12 font-mono">
           <span>Tax</span>
-          <span>$ {order.taxPrice}</span>
+          <span className="font-sans font-bold text-gray-600">$ {order.taxPrice}</span>
         </div>
-        <div className="flex justify-between mb-2">
+        <div className="flex justify-between ml-5 mb-2 w-9/12 font-mono">
           <span>Total</span>
-          <span>$ {order.totalPrice}</span>
+          <span className="font-sans font-bold text-gray-600">$ {order.totalPrice}</span>
         </div>
 
         {!order.isPaid && (
@@ -215,7 +217,7 @@ const Order = () => {
           <div>
             <button
               type="button"
-              className="bg-pink-500 text-white w-full py-2"
+              className="bg-yellow-400 font-mono font-bold ml-5 mb-5 mt-5 rounded-lg text-white w-[26rem] py-3"
               onClick={deliverHandler}
             >
               Mark As Delivered

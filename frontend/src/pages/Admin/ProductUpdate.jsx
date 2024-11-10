@@ -133,108 +133,179 @@ const AdminProductUpdate = () => {
 
   return (
     <>
-      <div className="container  xl:mx-[9rem] sm:mx-[0]">
+      <div className="container  xl:mx-[9rem] sm:mx-[0] ">
         <div className="flex flex-col md:flex-row">
           <AdminMenu />
-          <div className="md:w-3/4 p-3">
-            <div className="h-12">Update / Delete Product</div>
+          <div className="md:w-3/4 p-3 mt-28 ">
+            <div className="h-12 font-serif text-xl font-medium">Update / Delete Product</div>
 
             {image && (
               <div className="text-center">
                 <img
                   src={image}
                   alt="product"
-                  className="block mx-auto w-full h-[40%]"
+                  className="block mx-auto max-h-[200px]"
                 />
               </div>
             )}
 
             <div className="mb-3">
-              <label className="text-white  py-2 px-4 block w-full text-center rounded-lg cursor-pointer font-bold py-11">
+              <label className="text-white  px-4 block w-full text-center rounded-lg cursor-pointer font-bold py-11">
                 {image ? image.name : "Upload image"}
                 <input
                   type="file"
                   name="image"
                   accept="image/*"
                   onChange={uploadFileHandler}
-                  className="text-white"
+                  className="text-black ml-20"
                 />
               </label>
             </div>
 
             <div className="p-3">
               <div className="flex flex-wrap">
-                <div className="one">
-                  <label htmlFor="name">Name</label> <br />
+                
+
+              <div className=" relative z-0 w-full mb-5 group">
                   <input
                     type="text"
-                    className="p-4 mb-3 w-[30rem] border rounded-lg bg-[#101011] text-white mr-[5rem]"
+                    name="floating_name"
+                    id="floating_name"
+                    className="block pt-3 px-0 w-full text-lg text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none   focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                    placeholder=" "
                     value={name}
                     onChange={(e) => setName(e.target.value)}
+                    required
                   />
+                  <label
+                    for="floating_name"
+                    className="peer-focus:font-medium absolute text-xl text-gray-700  duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                  >
+                    Name
+                  </label>
                 </div>
 
-                <div className="two">
-                  <label htmlFor="name block">Price</label> <br />
+
+
+
+
+                <div className=" relative z-0 w-full mb-5 group">
                   <input
-                    type="number"
-                    className="p-4 mb-3 w-[30rem] border rounded-lg bg-[#101011] text-white "
+                    type="text"
+                    name="floating_name"
+                    id="floating_name"
+                    className="block pt-3 px-0 w-full text-lg text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none   focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                    placeholder=" "
                     value={price}
-                    onChange={(e) => setPrice(e.target.value)}
+                    onChange={(e) => setName(e.target.value)}
+                    required
                   />
+                  <label
+                    for="floating_name"
+                    className="peer-focus:font-medium absolute text-xl text-gray-700  duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                  >
+                    Price
+                  </label>
                 </div>
+
               </div>
 
               <div className="flex flex-wrap">
-                <div>
-                  <label htmlFor="name block">Quantity</label> <br />
+               
+
+              <div className=" relative z-0 w-full mb-5 group">
                   <input
                     type="number"
                     min="1"
-                    className="p-4 mb-3 w-[30rem] border rounded-lg bg-[#101011] text-white mr-[5rem]"
+                    name="floating_name"
+                    id="floating_name"
+                    className="block pt-3 px-0 w-full text-lg text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none   focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                    placeholder=" "
                     value={quantity}
-                    onChange={(e) => setQuantity(e.target.value)}
+                    onChange={(e) => setName(e.target.value)}
+                    required
                   />
+                  <label
+                    for="floating_name"
+                    className="peer-focus:font-medium absolute text-xl text-gray-700  duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                  >
+                    Quantity
+                  </label>
                 </div>
-                <div>
-                  <label htmlFor="name block">Brand</label> <br />
+               
+               
+                <div className=" relative z-0 w-full mb-5 group">
                   <input
-                    type="text"
-                    className="p-4 mb-3 w-[30rem] border rounded-lg bg-[#101011] text-white "
+                    type="number"
+                    min="1"
+                    name="floating_name"
+                    id="floating_name"
+                    className="block pt-3 px-0 w-full text-lg text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none   focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                    placeholder=" "
                     value={brand}
-                    onChange={(e) => setBrand(e.target.value)}
+                    onChange={(e) => setName(e.target.value)}
+                    required
                   />
+                  <label
+                    for="floating_name"
+                    className="peer-focus:font-medium absolute text-xl text-gray-700  duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                  >
+                    Brand
+                  </label>
                 </div>
               </div>
 
-              <label htmlFor="" className="my-5">
-                Description
-              </label>
-              <textarea
-                type="text"
-                className="p-2 mb-3 bg-[#101011]  border rounded-lg w-[95%] text-white"
-                value={description}
-                onChange={(e) => setDescription(e.target.value)}
-              />
-
-              <div className="flex justify-between">
-                <div>
-                  <label htmlFor="name block">Count In Stock</label> <br />
-                  <input
+              <div className=" relative z-0 w-full mb-5 group">
+                  <textarea
                     type="text"
-                    className="p-4 mb-3 w-[30rem] border rounded-lg bg-[#101011] text-white "
-                    value={stock}
-                    onChange={(e) => setStock(e.target.value)}
+                    name="floating_price"
+                    id="floating_price"
+                    className="block pt-3 px-0 w-full text-lg text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none   focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                    placeholder=" "
+                    value={description}
+                    onChange={(e) => setDescription(e.target.value)}
+                    required
                   />
+                  <label
+                    for="floating_price"
+                    className="peer-focus:font-medium absolute text-xl text-gray-700  duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                  >
+                    Description
+                  </label>
                 </div>
 
+              <div className="flex justify-between">
+              
+              
+              <div className=" relative z-0 w-full mb-5 group">
+                  <input
+                    type="number"
+                    min="1"
+                    name="floating_name"
+                    id="floating_name"
+                    className="block pt-3 px-0 w-full text-lg text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none   focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                    placeholder=" "
+                    value={stock}
+                    onChange={(e) => setName(e.target.value)}
+                    required
+                  />
+                  <label
+                    for="floating_name"
+                    className="peer-focus:font-medium absolute text-xl text-gray-700  duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                  >
+                    Count In Stock
+                  </label>
+                </div>
+              
+
                 <div>
-                  <label htmlFor="">Category</label> <br />
+                  <label htmlFor="" className="ml-4 font-medium">Category</label> <br />
                   <select
                     placeholder="Choose Category"
-                    className="p-4 mb-3 w-[30rem] border rounded-lg bg-[#101011] text-white mr-[5rem]"
+                    className="p-3 mb-3 w-[30rem] border rounded-lg  text-black ml-3 mr-[5rem]"
                     onChange={(e) => setCategory(e.target.value)}
                   >
+                    <option value="">--Please choose an option--</option>
                     {categories?.map((c) => (
                       <option key={c._id} value={c._id}>
                         {c.name}
@@ -247,13 +318,13 @@ const AdminProductUpdate = () => {
               <div className="">
                 <button
                   onClick={handleSubmit}
-                  className="py-4 px-10 mt-5 rounded-lg text-lg font-bold  bg-green-600 mr-6"
+                  className="py-2 px-8 mt-5 rounded-xl text-lg font-bold  bg-yellow-300 hover:bg-yellow-400 mr-6 "
                 >
                   Update
                 </button>
                 <button
                   onClick={handleDelete}
-                  className="py-4 px-10 mt-5 rounded-lg text-lg font-bold  bg-pink-600"
+                  className="py-2 px-8 mt-5 rounded-xl text-lg font-bold  bg-blue-500 hover:bg-blue-400 text-white"
                 >
                   Delete
                 </button>

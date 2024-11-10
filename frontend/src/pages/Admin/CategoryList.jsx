@@ -91,23 +91,25 @@ const CategoryList = () => {
   };
 
   return (
-    <div className="ml-[10rem] flex flex-col md:flex-row">
+    <div className="ml-[10rem] mt-40 flex flex-col md:flex-row">
       <AdminMenu />
       <div className="md:w-3/4 p-3">
-        <div className="h-12">Manage Categories</div>
+        <div className="h-10 text-lg font-semibold ml-4">Manage Categories</div>
         <CategoryForm
           value={name}
           setValue={setName}
           handleSubmit={handleCreateCategory}
         />
         <br />
-        <hr />
+        <div className=" border mb-2 border-black"/>
+
+        
 
         <div className="flex flex-wrap">
           {categories?.map((category) => (
             <div key={category._id}>
               <button
-                className="bg-white border border-pink-500 text-pink-500 py-2 px-4 rounded-lg m-3 hover:bg-pink-500 hover:text-white focus:outline-none foucs:ring-2 focus:ring-pink-500 focus:ring-opacity-50"
+                className="text-white bg-purple-600 hover:bg-purple-700 focus:outline-none mx-2 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mb-2 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900 "
                 onClick={() => {
                   {
                     setModalVisible(true);

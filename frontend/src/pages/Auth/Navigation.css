@@ -1,20 +1,13 @@
-#navigation-container {
-  width: 4%;
+#navigation-container { 
   transition: width 0.3s ease-in-out;
-  overflow: hidden; /* Hide overflowing content during transition */
+  overflow: hidden; 
 }
 
-#navigation-container:hover {
-  width: 15%;
+#navigation-container {
+  width: 300px;
 }
 
-/* Initially hide nav-item-name */
-.nav-item-name {
-  display: none;
-  transition: opacity 0.2s ease-in-out; /* Add opacity transition */
-}
-
-#navigation-container:hover .nav-item-name {
+#navigation-container .nav-item-name {
   display: block;
   opacity: 1;
 }
@@ -22,15 +15,15 @@
 .search-input {
   display: none;
   opacity: 0;
-  transition: opacity 0.2s ease-in-out; /* Add opacity transition */
+  transition: opacity 0.2s ease-in-out; 
 }
 
-#navigation-container:hover .search-input {
+#navigation-container .search-input {
   display: block;
   opacity: 1;
 }
 
-#navigation-container:hover .search-icon {
+#navigation-container.search-icon {
   display: none;
-  transition: opacity 0.2s ease-in-out; /* Add opacity transition */
+  transition: opacity 0.2s ease-in-out; 
 }

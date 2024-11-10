@@ -41,12 +41,13 @@ const Login = () => {
 
   return (
     <div>
-      <section className="pl-[10rem] flex flex-wrap">
-        <div className="mr-[4rem] mt-[5rem]">
-          <h1 className="text-2xl font-semibold mb-4">Sign In</h1>
-
-          <form onSubmit={submitHandler} className="container w-[40rem]">
-            <div className="my-[2rem]">
+         <div className="rounded-b-[3rem] h-[18rem] w-full bg-cyan-300">
+          <h1 className="text-white pt-24 text-center font-serif font-bold text-6xl">LOG IN</h1>
+    </div>
+      <section className=" bg-white pl-20 justify-center flex ">
+        <div className="mr-[4rem] mt-[4rem]">
+          <form onSubmit={submitHandler} className="container w-[34rem]">
+            <div className="mb-2">
               <label
                 htmlFor="email"
                 className="block text-sm font-medium text-white"
@@ -56,14 +57,14 @@ const Login = () => {
               <input
                 type="email"
                 id="email"
-                className="mt-1 p-2 border rounded w-full"
+                className=" text-lg px-4 py-3 border-2 border-black rounded-full w-full"
                 placeholder="Enter email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
               />
             </div>
 
-            <div className="mb-4">
+            <div className="mb-3">
               <label
                 htmlFor="password"
                 className="block text-sm font-medium text-white"
@@ -73,7 +74,7 @@ const Login = () => {
               <input
                 type="password"
                 id="password"
-                className="mt-1 p-2 border rounded w-full"
+                className=" text-lg px-4 py-3 border-2 border-black rounded-full w-full"
                 placeholder="Enter password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
@@ -83,31 +84,26 @@ const Login = () => {
             <button
               disabled={isLoading}
               type="submit"
-              className="bg-pink-500 text-white px-4 py-2 rounded cursor-pointer my-[1rem]"
+              className="border-4 ml-[11rem] text-xl text-center border-black rounded-full text-black font-semibold px-12 py-3 cursor-pointer my-[1rem] hover:text-white hover:bg-black"
             >
-              {isLoading ? "Signing In..." : "Sign In"}
+              {isLoading ? "SIGNING IN..." : "SIGN IN"}
             </button>
 
             {isLoading && <Loader />}
           </form>
 
-          <div className="mt-4">
+          <div className="mt-3 mb-20">
             <p className="text-white">
               New Customer?{" "}
               <Link
                 to={redirect ? `/register?redirect=${redirect}` : "/register"}
-                className="text-pink-500 hover:underline"
+                className=" my-5 pl-[4.5rem]  text-xl text-center  text-black font-bold  cursor-pointer  hover:underline"
               >
-                Register
+                Create Account
               </Link>
             </p>
           </div>
         </div>
-        <img
-          src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1964&q=80"
-          alt=""
-          className="h-[65rem] w-[59%] xl:block md:hidden sm:hidden rounded-lg"
-        />
       </section>
     </div>
   );
